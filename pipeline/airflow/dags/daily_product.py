@@ -18,7 +18,7 @@ default_args = {
 with DAG(
     'example_hello_dag',            # DAG 이름
     default_args=default_args,       # 기본 인자
-    description='간단한 Hello 메시지를 출력하는 DAG ',
+    description='매일 API를 통해 데이터 적재 DAG ',
     schedule_interval='@daily',      # 매일 실행하도록 설정
     catchup=False                    # 과거 실행 이력을 무시
 ) as dag:

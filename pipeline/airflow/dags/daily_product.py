@@ -1,10 +1,14 @@
 from airflow import DAG
+from dotenv import load_dotenv
 from airflow.operators.python_operator import PythonOperator
 import datetime
 
-# DAG에서 실행할 함수 정의
-def print_hello():
-    print("Hello, Airflow!")
+# 환경 설정 
+load_dotenv()
+
+# 함수 정의
+def get_subway_data():
+    pass    
 
 # 기본 인자 설정 (DAG의 설정값)
 default_args = {

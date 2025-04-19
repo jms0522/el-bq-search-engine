@@ -16,18 +16,18 @@ default_args = {
 
 # DAG 정의: 이름, 기본 인자, 실행 주기 등 설정
 with DAG(
-    'example_hello_dag',            # DAG 이름
-    default_args=default_args,       # 기본 인자
+    'daily_get_api_dag',            
+    default_args=default_args,       
     description='매일 API를 통해 데이터 적재 DAG ',
-    schedule_interval='@daily',      # 매일 실행하도록 설정
-    catchup=False                    # 과거 실행 이력을 무시
+    schedule_interval='@daily',      # Daily
+    catchup=False                    # 과거 실행 무시
 ) as dag:
     
-    # PythonOperator를 사용하여 print_hello 함수 실행
-    hello_task = PythonOperator(
-        task_id='hello_task',
+    # 함수
+    get_subway_api = PythonOperator(
+        task_id='subway',
         python_callable=print_hello
     )
 
-    # DAG 내에서 단일 태스크이므로 의존성 설정은 생략 가능
-    hello_task
+    # 의존성 주입
+    get_subway_api
